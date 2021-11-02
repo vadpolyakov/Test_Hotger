@@ -29,12 +29,12 @@ namespace Test
                         ObstaclesDistance = 12f;
                         return;
                     case GameDifficulty.Normal:
-                        PlayerSpeed = 8f;
-                        ObstaclesDistance = 9f;
+                        PlayerSpeed = 6f;
+                        ObstaclesDistance = 10f;
                         return;
                     case GameDifficulty.Hard:
-                        PlayerSpeed = 10f;
-                        ObstaclesDistance = 7f;
+                        PlayerSpeed = 8f;
+                        ObstaclesDistance = 10f;
                         return;
                 }
 
