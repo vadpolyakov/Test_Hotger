@@ -12,6 +12,7 @@ namespace Test
         #endregion
         #region Variables
         private float PlayerSpeed => GameController.PlayerSpeed;
+        private float Current_Speed => PlayerSpeed + (PlayerSpeed * Mathf.FloorToInt(PlayerTime / 15) * .3f);
         private float Gravity => GameController.WorldGravity;
         private Transform CameraTransform;
         #endregion
@@ -28,13 +29,13 @@ namespace Test
             if (!GameController.isPause)
             {
                 PlayerTime += Time.deltaTime;
-                transform.position += Vector3.right * Time.deltaTime * PlayerSpeed;
+                transform.position += Vector3.right * Time.deltaTime * Current_Speed;
                 if(isUp)
-                    transform.position += Vector3.up * Time.deltaTime * (PlayerSpeed * .5f);
+                    transform.position += Vector3.up * Time.deltaTime * (Current_Speed * .5f);
                 else
-                    transform.position += Vector3.down * Time.deltaTime * (PlayerSpeed * .5f);
+                    transform.position += Vector3.down * Time.deltaTime * (Current_Speed * .5f);
 
-                CameraTransform.position = Vector3.Lerp(CameraTransform.position, new Vector3(transform.position.x, transform.position.y, CameraTransform.position.z), Time.deltaTime * PlayerSpeed);
+                CameraTransform.position = Vector3.Lerp(CameraTransform.position, new Vector3(transform.position.x, transform.position.y, CameraTransform.position.z), Time.deltaTime * Current_Speed);
 
                 GameController.PlayerPose = transform.position;
             }
